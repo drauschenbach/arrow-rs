@@ -115,6 +115,7 @@ mod tests {
     };
 
     #[test]
+    #[cfg(target_pointer_width = "64")]
     fn test_parquet_derive_hello() {
         let file = get_temp_file("test_parquet_derive_hello", &[]);
 
