@@ -37,8 +37,11 @@ jobs:
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: ["amd64"]
     container:
-      image: amd64/rust
+      image: ${{arch}}/rust
     defaults:
       run:
         working-directory: object_store

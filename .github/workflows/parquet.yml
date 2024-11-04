@@ -49,8 +49,11 @@ jobs:
   linux-test:
     name: Test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: ["amd64"]
     container:
-      image: amd64/rust
+      image: ${{arch}}/rust
     steps:
       - uses: actions/checkout@v4
         with:
@@ -72,8 +75,11 @@ jobs:
   linux-features:
     name: Check Compilation
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: ["amd64"]
     container:
-      image: amd64/rust
+      image: ${{arch}}/rust
     steps:
       - uses: actions/checkout@v4
         with:
@@ -168,8 +174,11 @@ jobs:
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: ["amd64"]
     container:
-      image: amd64/rust
+      image: ${{arch}}/rust
     steps:
       - uses: actions/checkout@v4
       - name: Setup Rust toolchain
