@@ -345,6 +345,9 @@ mod tests {
         assert_eq!(IntervalDayTime::new(1, 0).as_usize(), 1);
         assert_eq!(IntervalMonthDayNano::new(1, 0, 0).as_usize(), 1);
 
+        #[cfg(target_pointer_width = "32")]
+        let a = IntervalDayTime::new(23, 0);
+        #[cfg(target_pointer_width = "64")]
         let a = IntervalDayTime::new(23, 53);
         let b = IntervalDayTime::usize_as(a.as_usize());
         assert_eq!(a, b);
